@@ -4,10 +4,10 @@ return [
     'database' => [
         'taskmanager' => [
             'adapter'   => 'PDO_MYSQL',
-            'host'      => 'mysql.zzz.com.ua',
+            'host'      => '127.0.0.1',
             'dbname'    => 'xzet',
-            'username'  => 'xzetgt',
-            'password'  => 'Xzet6398db',
+            'username'  => 'root',
+            'password'  => '',
             'charset'   => 'utf8'
         ]
     ],
