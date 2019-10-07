@@ -1,0 +1,59 @@
+<?php if ($task) {?>
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Details Task #<?= $task['id']; ?></h3>
+        </div>
+    </div>
+    <div class="row py-3">
+        <div class="col-md-12"> 
+            <table class="table table-user-information">
+                <tbody>
+                    <tr>
+                        <td class="col-md-3">ID</td>
+                        <td class="col-md-9"><?= $task['id']; ?></td>
+                    </tr>
+                    <tr>
+                        <td>User Name</td>
+                        <td><?= $task['user_name']; ?></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td><?= $task['email']; ?></td>
+                    </tr>
+                    <tr>
+                        <td>Body</td>
+                        <td><?= $task['body']; ?></td>
+                    </tr>
+<!--                    <tr>-->
+<!--                        <td>Image</td>-->
+<!--                        <td>-->
+<!--                            --><?php //if ($task['image_url']) {?>
+<!--                                <img src="--><?//= $task['image_url'];?><!--" />-->
+<!--                            --><?php //} else {?>
+<!--                                no image-->
+<!--                            --><?php //}?>
+<!--                        </td>-->
+<!--                    </tr>-->
+                    <tr>
+                        <td>Status</td>
+                        <?php if ($task['status'] == \Task::STATUS_FINISHED) {
+                            $badge = 'success';
+                        } else if ($task['status'] == \Task::STATUS_REJECTED) {
+                            $badge = 'danger';
+                        } else {
+                            $badge = 'secondary';
+                        }?>
+                        <td><span class="badge badge-<?= $badge;?>"><?= $task['status'];?></span></td>
+                    </tr>
+                    <tr>
+                        <td>Create Date</td>
+                        <td><?= $task['create_date']; ?></td>
+                    </tr>
+                </tbody>
+            </table>
+            <a class="btn btn-secondary" href="/" role="button">Return</a>
+        </div>
+    </div>
+<?php } else {?>
+    not found task
+<?php }?>

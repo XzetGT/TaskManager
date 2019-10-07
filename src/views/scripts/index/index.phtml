@@ -1,0 +1,60 @@
+<div class="row">
+    <div class="col-md-12">
+        <a class="btn btn-primary" href="/task/add" role="button">New Task</a>
+    </div>
+</div>
+<div class="row py-3">
+    <?php if ($tasks) {?>
+        <?php
+            $url = "/?";
+            if ($page) $url .= "page={$page}&";
+            if ($rowsPerPage) $url .= "rowsPerPage={$rowsPerPage}&";
+        ?>
+        <div class="col-md-12 table-responsive">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th><a href="<?= $url . "sortField=id&sortDirection=" . (($sortField == 'id') ? ($sortDirection == "ASC" ? "DESC" : "ASC") : "DESC");?>">#</a></th>
+                        <th><a href="<?= $url . "sortField=user_name&sortDirection=" . (($sortField == 'user_name') ? ($sortDirection == "ASC" ? "DESC" : "ASC") : "DESC");?>">User Name</a></th>
+                        <th><a href="<?= $url . "sortField=email&sortDirection=" . (($sortField == 'email') ? ($sortDirection == "ASC" ? "DESC" : "ASC") : "DESC");?>">Email</a></th>
+                        <th><a href="<?= $url . "sortField=status&sortDirection=" . (($sortField == 'status') ? ($sortDirection == "ASC" ? "DESC" : "ASC") : "DESC");?>">Status</a></th>
+                        <th>Create Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach($tasks as $task) {?>
+                        <tr>
+                            <td><?= $task['id'];?></td>
+                            <td><?= $task['user_name'];?></td>
+                            <td><?= $task['email'];?></td>
+                            <td>
+                                <?php if ($task['status'] == \Task::STATUS_FINISHED) {
+                                    $badge = 'success';
+                                } else if ($task['status'] == \Task::STATUS_REJECTED) {
+                                    $badge = 'danger';
+                                } else {
+                                    $badge = 'secondary';
+                                }?>
+                                <span class="badge badge-<?= $badge;?>"><?= $task['status'];?></span>
+                            </td>
+                            <td><?= $task['create_date'];?></td>
+                            <td>
+                                <a class="btn btn-primary btn-sm" href="/task/view/?id=<?= $task['id'];?>" role="button">Details</a>
+                                <?php if (\Core\Auth::isLogged()) {?>
+                                    <a class="btn btn-warning btn-sm" href="/task/edit/?id=<?= $task['id'];?>" role="button">Edit</a>
+                                <?php }?>
+                            </td>
+                        </tr>
+                    <?php }?>
+                </tbody>
+            </table>
+        </div>
+            
+        <div class="col-md-12">
+            <?php require_once(SCRIPTS_PATH . DS . 'parts' . DS . 'pager.phtml');?>
+        </div>
+    <?php } else {?>
+        no results
+    <?php }?>
+</div>
