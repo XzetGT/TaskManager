@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Окт 07 2019 г., 14:17
+-- Время создания: Окт 07 2019 г., 15:24
 -- Версия сервера: 10.3.17-MariaDB-102+cba-log
 -- Версия PHP: 7.1.32
 
@@ -46,7 +46,8 @@ INSERT INTO `tasks` (`id`, `user_name`, `email`, `body`, `image_url`, `status`, 
 (1, 'User1', 'email@gmail.com', 'dffsdffstyhtutth', NULL, 'finished', '2019-10-07 11:05:42', NULL),
 (3, 'User3', 'user3@mail.ru', 'jhngpokbbphg', NULL, 'rejected', '2019-10-07 11:11:01', NULL),
 (4, 'User4', 'email2@gmail.com', 'fgd;ayrhty', NULL, 'new', '2019-10-07 11:11:59', NULL),
-(5, 'User5', 'user5@gmail.com', 'fgd;ayrhty', NULL, 'finished', '2019-10-07 11:11:59', NULL);
+(5, 'User5', 'user5@gmail.com', 'fgd;ayrhty', NULL, 'finished', '2019-10-07 11:11:59', NULL),
+(6, 'test', 'test@test.com', 'test job', NULL, 'new', '2019-10-07 12:12:53', NULL);
 
 -- --------------------------------------------------------
 
@@ -66,7 +67,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `user_name`, `password`, `create_date`) VALUES
-(2, 'izet', 'b59c67bf196a4758191e42f76670ceba', '2019-10-06 16:30:36');
+(2, 'admin', '202cb962ac59075b964b07152d234b70', '2019-10-06 16:30:36');
 
 --
 -- Индексы сохранённых таблиц
@@ -97,7 +98,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `tasks`
 --
 ALTER TABLE `tasks`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
